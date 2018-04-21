@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    AVST-Automatic Vehicle Speed Trap
                 </div>
 
                 <div class="links">
