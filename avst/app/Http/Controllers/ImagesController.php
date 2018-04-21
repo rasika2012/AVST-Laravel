@@ -36,7 +36,9 @@ class ImagesController extends Controller
 
     public function returnAll(){
         $allItem=images::all();
-        return response()->json(["all"=>$allItem],201);
+        $allItem[0]="asd";
+        $allItem[1]="acsd";
+        return view('all_images',['items'=>$allItem]);
     }
 
 
