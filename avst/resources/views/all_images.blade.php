@@ -7,7 +7,7 @@
                 @auth
                     <a href="{{ url('/home') }}">Home</a>
                     <a href="{{ url('/home') }}">Home</a>
-                    <a href="{{ url('/home') }}">{{$name}}</a>
+
 
                 @else
                     <a href="{{ route('login') }}">Login</a>
