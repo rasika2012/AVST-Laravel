@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
+use App\images;
 use Illuminate\Http\Request;
-use App\Imag;
 
-class ImagController extends Controller
+class ImagesController extends Controller
 {
     //save image to the data base and storange
     public function ImageAdd(Request $request){
@@ -25,7 +24,7 @@ class ImagController extends Controller
 
 
 
-        $image=(new \App\Imag);
+        $image=(new \App\images());
         $image->path = $request->input('path');
         $image->location = $request->input('location');
         $image->image = $fileName;
@@ -36,14 +35,10 @@ class ImagController extends Controller
 
 
     public function returnAll(){
-        $allItem=Imag::all();
+        $allItem=images::all();
         return response()->json(["all"=>$allItem],201);
     }
 
-    public function add(){
-        //$allItem=Imag::all();
-        return response()->json(["all"=>"hari"],201);
-    }
 
     /**
      * @param $id
@@ -51,7 +46,7 @@ class ImagController extends Controller
      */
     public function deleteImage($id){
         //$imgs=new Imag();
-        $imgs= (new \App\Imag)->find($id);
+        $imgs= (new \App\images())->find($id);
         if($imgs){
             $imgs->delete();
             $path = $imgs->path;
@@ -74,7 +69,7 @@ class ImagController extends Controller
 
         //  $result= Imag::all();//Imag::where('path','like',$search)->orWhere('name', 'like', $search)->get();
 
-        $books = Imag::where('location', 'LIKE', '%' . $search . '%')->limit(10)->get();
+        $books = images::where('location', 'LIKE', '%' . $search . '%')->limit(10)->get();
         return response()->json(['all'=>$books]);
         //return view('path/location/id', compact('lacation'));
         /*   $columns = [];
