@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //get all images here
 Route::get('/allimges', 'ImagesController@returnAll')->name('home');
+//add new image
+Route::POST('/add','ImagesController@ImageAdd');
