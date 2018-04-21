@@ -9,7 +9,7 @@ class ImagesController extends Controller
 {
     //save image to the data base and storange
     public function ImageAdd(Request $request){
-
+/*
         $explote = explode(',',$request->image);
         $decode = base64_decode($explote[1]);
         $explote1=explode('/',$explote[0]);
@@ -19,15 +19,15 @@ class ImagesController extends Controller
         $fileName = $time . '.' . $extention;
         $filePath = public_path().'/'.$fileName;
         file_put_contents($filePath,$decode);
-
+*/
 
 
 
 
         $image=(new \App\images());
-        $image->path = $request->input('path');
-        $image->location = $request->input('location');
-        $image->image = $fileName;
+        $image->speed = 'speed';//$request->input('speed');
+        $image->location = 'location';//$request->input('location');
+        $image->image = "chathu".$request->input('location');//$fileName;
         $image->save();
 
         return response()->json( ['msg'=>$image],201);
@@ -69,8 +69,8 @@ class ImagesController extends Controller
 
         //  $result= Imag::all();//Imag::where('path','like',$search)->orWhere('name', 'like', $search)->get();
 
-        $books = images::where('location', 'LIKE', '%' . $search . '%')->limit(10)->get();
-        return response()->json(['all'=>$books]);
+        $images = images::where('location', 'LIKE', '%' . $search . '%')->limit(10)->get();
+        return response()->json(['all'=>$images]);
         //return view('path/location/id', compact('lacation'));
         /*   $columns = [];
 
