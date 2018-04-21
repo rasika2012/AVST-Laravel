@@ -9,7 +9,7 @@ class ImagesController extends Controller
 {
     //save image to the data base and storange
     public function ImageAdd(Request $request){
-/*
+
         $explote = explode(',',$request->image);
         $decode = base64_decode($explote[1]);
         $explote1=explode('/',$explote[0]);
@@ -19,15 +19,15 @@ class ImagesController extends Controller
         $fileName = $time . '.' . $extention;
         $filePath = public_path().'/'.$fileName;
         file_put_contents($filePath,$decode);
-*/
+
 
 
 
 
         $image=(new \App\images());
-        $image->speed = 'speed';//$request->input('speed');
-        $image->location = 'location';//$request->input('location');
-        $image->image = "chathu".$request->input('location');//$fileName;
+        $image->speed = $request->input('speed');
+        $image->location = $request->input('location');
+        $image->image = $fileName;
         $image->save();
 
         return response()->json( ['msg'=>$image],201);
@@ -35,6 +35,11 @@ class ImagesController extends Controller
 
 
     public function returnAll(){
+      /*  if(!\Auth::check()){
+            return view('home');
+        }
+*/
+
         $allItem=images::all();
         $allItem[0]="asd";
         $allItem[1]="acsd";
