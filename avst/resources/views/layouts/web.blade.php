@@ -85,9 +85,12 @@
             </li>
         </ul>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        @endguest
+    @endguest
 </nav>
-@yield('content');
+@guest
+@else
+    @yield('content');
+@endguest
 </body>
 </html>
 {{--
