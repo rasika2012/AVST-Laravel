@@ -20,9 +20,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//get all images hereaddnew
 Route::get('/allimges', 'ImagesController@returnAll')->name('All Images');
 Route::get('/addnew', function () {
     return view('uploadimg');
 });//deleteImage
 Route::get('/delete/{id}','ImagesController@deleteImage');
+
