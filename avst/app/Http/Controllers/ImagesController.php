@@ -7,31 +7,32 @@ use Illuminate\Http\Request;
 
 class ImagesController extends Controller
 {
+
     //save image to the data base and storange
     public function ImageAdd(Request $request)
     {
-        if ($request->image != null) {
-            $explote = explode(',', $request->image);
-            $decode = base64_decode($explote[1]);
-            $explote1 = explode('/', $explote[0]);
-            $explote2 = explode(';', $explote1[1]);
-            $extention = $explote2[0];
-            $time = Carbon::now()->timestamp;
-            $fileName = $time . '.' . $extention;
-            $filePath = public_path() . '/' . $fileName;
-            file_put_contents($filePath, $decode);
+
+        $explote = explode(',', $request->image);
+        $decode = base64_decode($explote[1]);
+        $explote1 = explode('/', $explote[0]);
+        $explote2 = explode(';', $explote1[1]);
+        $extention = $explote2[0];
+        $time = microtime();
+        $fileName = $time . '.' . $extention;
+        $filePath = public_path() . '/' . $fileName;
+        file_put_contents($filePath, $decode);
 
 
-            $image = (new \App\images());
-            $image->path = $request->input('path');
-            $image->location = $request->input('location');
-            $image->image = $fileName;
-            $image->save();
-           // return view('uploadimg', ['items' => $image]);
-            return response()->json( ['msg'=>$image],201);
-        }
-       // return view('uploadimg', ['items' => 'null']);
-        return null;
+        $image = (new \App\images());
+        $image->speed = $request->input('path');
+        $image->location = $request->input('location');
+        $image->image = $fileName;
+        $image->save();
+        // return view('uploadimg', ['items' => $image]);
+        return response()->json(['msg' => $image], 201);
+
+        // return view('uploadimg', ['items' => 'null']);
+
     }
 
 
@@ -55,10 +56,10 @@ class ImagesController extends Controller
             $imgs->delete();
             $path = $imgs->path;
             //  unlink(public_path().'/'.$path);
+            return redirect('allimges');
 
-            return response()->json(["msg" => "ok"]);
         } else {
-            return response()->json(["msg" => "no img"]);
+            return redirect('allimges');
         }
 
 

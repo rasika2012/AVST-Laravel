@@ -16,4 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::POST('/add1',['uses'=>'ImagesController@ImageAdd']);
+
+Route::POST('/add1',[
+    'uses'=>'ImagesController@ImageAdd'
+]);
