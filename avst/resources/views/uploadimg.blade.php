@@ -1,23 +1,46 @@
 @extends('layouts.web')
 
 @section('content')
-    <h1>New</h1>
-    <form @submit.prevent="submitFrom">
-        <div class="form-group">
-            <label>Location</label>
-            <input type="text" name="location" placeholder="location" >
-        </div>
-        <div class="form-group">
-            <label>Path</label>
-            <input type="text" name="path" placeholder="path" >
-        </div>
-        <div class="form-group">
-            <label>Image</label>
-            <input type="file"  name="Image"  placeholder="Image">
-        </div>
+    <div class="col-md-8 col-md-offset-2">
+        <h1 class="panel-heading">Update Code to Units</h1>
+        <div class="panel panel-default">
+
+            <div></div>
+
+            <div class="panel-body">
+                <form class="form-horizontal" method="GET" action="/uoload/code">
 
 
+                    <div class="form-group">
+                        <label for="email" class="col-md-4 control-label">Software Version</label>
+                        <div class="col-md-6">
+                            <input id="author" type="text" class="form-control" name="Author" required autofocus>
+                        </div>
+                    </div>
 
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+                    <div class="form-group">
+                        <label for="email" class="col-md-4 control-label">Comments</label>
+                        <div class="col-md-6">
+                            <input id="author" type="text" class="form-control" name="Author" required autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="col-md-4 control-label">Code(*.py)</label>
+                        <div class="col-md-6">
+                            <textarea id="author" rows="20" type="text" class="form-control" name="Author" required autofocus></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-8 col-md-offset-4">
+                            <button type="submit" class="btn btn-primary">
+                                Upload
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection

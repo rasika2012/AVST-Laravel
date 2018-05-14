@@ -15,7 +15,7 @@ class ImagesController extends Controller
         $explote1=explode('/',$explote[0]);
         $explote2=explode(';',$explote1[1]);
         $extention =$explote2[0];
-        $time = Carbon::now()->timestamp;
+        $time = time();
         $fileName = $time . '.' . $extention;
         $filePath = public_path().'/'.$fileName;
         file_put_contents($filePath,$decode);
@@ -41,8 +41,6 @@ class ImagesController extends Controller
 */
 
         $allItem=images::all();
-        $allItem[0]="asd";
-        $allItem[1]="acsd";
         return view('all_images',['items'=>$allItem]);
     }
 
@@ -58,10 +56,11 @@ class ImagesController extends Controller
             $imgs->delete();
             $path = $imgs->path;
             //  unlink(public_path().'/'.$path);
-
-            return response()->json(["msg"=>"ok"]);
+            return redirect('allimges');
+            //return response()->json(["msg"=>"ok"]);
         }else{
-            return response()->json(["msg"=>"no img"]);
+            return redirect('allimges');
+            //return response()->json(["msg"=>"no img"]);
         }
 
 
