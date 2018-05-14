@@ -26,3 +26,10 @@ Route::get('/addnew', function () {
     return view('uploadimg');
 });//deleteImage
 Route::get('/delete/{id}','ImagesController@deleteImage');
+
+Route::get('/locations', function () {
+    return view('Locations');
+});
+Route::get('/settings', function () {
+    return view('Settings');
+});

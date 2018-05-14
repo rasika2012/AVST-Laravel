@@ -27,11 +27,12 @@ class AllImagesController extends Controller
 
 
         //
-        $text1="Test bvbvb";
-        return view('all_images',['name' => $text1]);
+        $text1 = "Test bvbvb";
+        return view('all_images', ['name' => $text1]);
     }
 
-    public function getImgs(){
+    public function getImgs()
+    {
         return "sdd";
     }
 }

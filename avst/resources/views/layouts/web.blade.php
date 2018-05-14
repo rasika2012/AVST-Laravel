@@ -11,44 +11,89 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        .modal-dialog {
+            margin: 0px auto;
+        }
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-            crossorigin="anonymous"></script>
+        .modal-backdrop.fade {
+            opacity: 0.1;
+            filter: alpha(opacity=0.1);
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #FFF;
+            border: 1px solid #CECECE;
+            border-radius: 0px;
+            -webkit-box-shadow:none;
+            box-shadow: none;
+            background-clip: padding-box;
+            outline: 0;
+        }
+
+
+        .modal-header {
+            padding: 11px 15px;
+            background-color: #F8F8F8;
+            background: -webkit-linear-gradient(top, #F8F8F8, #F2F2F2);
+            background: -moz-linear-gradient(top, #f8f8f8, #f2f2f2);
+            background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
+            background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
+            background: linear-gradient(top, #f8f8f8, #f2f2f2);
+        }
+
+        #map {
+            height: 100%;
+        }
+    </style>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
             integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-    <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar fixed-top bg-light navbar-expand navbar navbar-default ">
+
+    <a class="nav-link" href="#">AVST-Automated Vehilcle Speed Trap</a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse " id="navbarNav">
         <ul class="navbar-nav">
             <!-- Authentication Links -->
             @guest
-                <li><a href="{{ route('login') }}">Login</a></li>
-                <li><a href="{{ route('register') }}">Register</a></li>
-            @else
+
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                </li>
+                <li class="nav-item active">
+                <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+                </li>
+            @else
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/allimges">All Images</a>
+                    <a class="nav-link" href="/allimges">Snaps</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/addnew">Pricing</a>
+                    <a class="nav-link" href="/addnew">Software</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                    <a class="nav-link " href="/locations">Units</a>
                 </li>
 
             @endguest
@@ -59,9 +104,6 @@
     @else
 
         <ul class="navbar-nav">
-            <li class=" nav-item">
-                <p class="nav-link disabled">Hi</p>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
@@ -77,7 +119,7 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
-                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="/settings">Settings</a>
                 </div>
             </li>
             <li class=" nav-item">
@@ -87,8 +129,15 @@
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     @endguest
 </nav>
+<br><br><br>
 @guest
+    <br>
+    <br>
+    <p></p>
+    <h1>&nbsp;&nbsp;&nbsp;Login or Create an Acount</h1>
 @else
+    <br>
+    <br>
     @yield('content');
 @endguest
 </body>
