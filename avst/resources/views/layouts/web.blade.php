@@ -129,6 +129,7 @@
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     @endguest
 </nav>
+
 <br><br><br>
 @guest
     <br>
@@ -138,6 +139,7 @@
 @else
     <br>
     <br>
+
     @yield('content');
 @endguest
 </body>

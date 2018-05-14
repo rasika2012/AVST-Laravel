@@ -24,6 +24,7 @@ class ImagesController extends Controller
 
 
 
+
         $image=(new \App\images());
         $image->speed = $request->input('speed');
         $image->location = $request->input('location');
@@ -34,14 +35,14 @@ class ImagesController extends Controller
     }
 
 
-    public function returnAll(){
-      /*  if(!\Auth::check()){
-            return view('home');
-        }
-*/
 
-        $allItem=images::all();
-        return view('all_images',['items'=>$allItem]);
+
+    public function returnAll()
+    {
+        $allItem = images::all();
+        return view('all_images', ['items' => $allItem]);
+
+
     }
 
 
@@ -75,8 +76,11 @@ class ImagesController extends Controller
 
         //  $result= Imag::all();//Imag::where('path','like',$search)->orWhere('name', 'like', $search)->get();
 
+
+
         $images = images::where('location', 'LIKE', '%' . $search . '%')->limit(10)->get();
         return response()->json(['all'=>$images]);
+
         //return view('path/location/id', compact('lacation'));
         /*   $columns = [];
 
