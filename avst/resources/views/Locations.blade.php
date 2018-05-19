@@ -28,15 +28,21 @@
 </head>
 <body>
 <div id="map"></div>
+
+<li class="nav-item">
+    <a class="nav-link" href="{{ url('/getAllUnits') }}">All</a>
+</li>
+
 <script>
     var map;
 
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 7.3086281, lng: 81.6728802},
+            center: {lat: 7.3086281, lng: 8.6728802},
             zoom: 23
         });
     }
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBc3zPW7iomxc1XunorH7FMUr6UCCZvtU&callback=initMap"
         async defer></script>
