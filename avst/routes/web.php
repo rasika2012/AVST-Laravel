@@ -33,3 +33,10 @@ Route::get('/locations', function () {
 Route::get('/settings', function () {
     return view('Settings');
 });
+Route::get('/addunit', function () {
+    return view('addUnit');
+});
+Route::get('/location/{id}','UnitsController@getLocation');
+Route::get('/getAllUnits' , 'UnitsController@getAllUnit');
+Route::post('/addNewUnit',['uses'=>'UnitsController@addUnit']);
+

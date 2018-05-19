@@ -95,6 +95,10 @@
                 <li class="nav-item">
                     <a class="nav-link " href="/locations">Units</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/addunit">Add unit</a>
+                </li>
+
 
             @endguest
         </ul>
