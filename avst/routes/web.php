@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\ImagController;
+use App\Http\Controllers\UnitsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,5 @@ Route::get('/addnew', function () {
     return view('uploadimg');
 });//deleteImage
 Route::get('/delete/{id}','ImagesController@deleteImage');
+Route::get('/location/{id}','UnitsController@getLocation');
 
