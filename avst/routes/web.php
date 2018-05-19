@@ -27,4 +27,6 @@ Route::get('/addnew', function () {
 });//deleteImage
 Route::get('/delete/{id}','ImagesController@deleteImage');
 Route::get('/location/{id}','UnitsController@getLocation');
+Route::get('/getAllUnits' , 'UnitsController@getAllUnit');
+Route::POST('/addUnit','ImagesController@ImageAdd');
 

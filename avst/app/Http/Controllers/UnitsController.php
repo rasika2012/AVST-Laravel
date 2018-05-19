@@ -11,7 +11,7 @@ class UnitsController extends Controller
         $unit = Unit::find($id);
         return response()->json(['unit'=>$unit]);
     }
-    public function getAllLocation(){
+    public function getAllUnit(){
         $units = Unit::all();
         return response()->json(['allUnit'=>$units]);
 
