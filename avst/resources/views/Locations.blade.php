@@ -28,10 +28,10 @@
     </head>
     <body>
     <div class="row">
-        <div class="col-sm-6 h-100">
-            <div id="map"></div>
+        <div class="col-sm-3 h-100">
+            <div class="rounded" id="map"></div>
         </div>
-        <div class="col-sm-6 h-100">
+        <div class="col col-sm-9 h-100">
 
 
             <table class="table">
@@ -41,18 +41,22 @@
                     <th scope="col">Location</th>
                     <th scope="col">Max Speed</th>
                     <th scope="col">Lon/Lat</th>
-
                     <th scope="col">show</th>
+                    <th>:</th>
+                    <th scope="col">X</th>
+
                 </tr>
                 </thead>
                 @foreach ($items as $item)
 
                     <tr>
-                        <th scope="col">{{$item->id}}</th>
+                        <th scope="col">{{$item->unitId}}</th>
                         <th scope="col">{{$item->location}}</th>
                         <th scope="col">{{$item->max_speed}}</th>
-                        <th scope="col" class="btn" onclick="setNewLocation({{json_encode($item)}})">{{$item->latitude}} , {{$item->longitude}}</th>
-                        <th scope="col"><input type="button" onclick="setNewLocation({{json_encode($item)}})" class="btn" value="show"></th>
+                        <th scope="col" class="btn" onclick="setNewLocation({{json_encode($item)}})"><a >{{$item->latitude}} , {{$item->longitude}}</a></th>
+                        <th scope="col"><a href="/locationimage?searchText={{$item->location}}" class="btn" >show..</a></th>
+                        <th>:</th>
+                        <th scope="col"><a type="button" href="/deleteUnit/{{$item->id}}" class="btn bg-danger" >X</a></th>
                     </tr>
                     </thead>
                 @endforeach
@@ -68,16 +72,27 @@
         var map;
 
         function initMap() {
+            var myLatLng = {lat: -25.363, lng: 131.044};
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 7.3086281, lng: 81.6728802},
-                zoom: 23
+                center: myLatLng,
+                zoom: 10
+            });
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Hello World!'
             });
         }
 
         function setNewLocation(item) {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: parseFloat(item.latitude), lng: parseFloat(item.longitude)},
-                zoom: 23
+                zoom: 15
+            });
+            var marker = new google.maps.Marker({
+                position: {lat: parseFloat(item.latitude), lng: parseFloat(item.longitude)},
+                map: map,
+                title: 'Hello World!'
             });
 
         }

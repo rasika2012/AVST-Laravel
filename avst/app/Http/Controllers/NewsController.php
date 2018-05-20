@@ -10,8 +10,7 @@ class NewsController extends Controller
     //
     public function getNews(){
         $news=News::all();
-        return view('welcome',['items'=>$news]);
-
+        return view('welcome',['items'=>$news->reverse()]);
     }
     public function setNews(Request $request){
         $news= new News();
@@ -22,10 +21,10 @@ class NewsController extends Controller
     }
 
 
-    public function deleteNews(Request $request){
-        $news=new App/News()->find($request->input("key"));
-
-        return view('welcome',['items'=>$news]);
+    public function deleteNews( $id){
+        $news=(new \App\News())->find($id);
+        $news->delete();
+        return redirect("/");
 
     }
 }
