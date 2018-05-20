@@ -3,18 +3,14 @@
 @section('content')
 
     <head>
-        <title>Simple Map</title>
         <meta name="viewport" content="initial-scale=1.0">
         <meta charset="utf-8">
         <style>
-            /* Always set the map height explicitly to define the size of the div
-             * element that contains the map. */
+
             #map {
-                height: 30%;
+                height: 100%;
 
             }
-
-            /* Optional: Makes the sample page fill the window. */
             html, body {
                 height: 100%;
                 margin: 0;
@@ -23,7 +19,28 @@
         </style>
     </head>
     <body>
-    <div id="map"></div>
+    <div class="row h-100">
+        <div class="col-sm-6 h-100">
+            <div id="map"></div>
+        </div>
+        <div class="col-sm-6 h-100" style="background-color:pink;">
+            <div class="row">
+                @foreach ($items as $item)
+                    <div class="card" style="width: 18rem;">
+
+                        <div class="card-body">
+                            <h5 class="card-title">{{$item->caption}}</h5>
+                            <p class="card-text">{{$item->news}}</p>
+                            <a href="#" class="btn btn-danger btn-sm">X</a>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
+        </div>
+    </div>
+
+
     <script>
         var map;
 
