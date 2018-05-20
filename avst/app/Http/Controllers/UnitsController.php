@@ -13,7 +13,8 @@ class UnitsController extends Controller
     }
     public function getAllUnit(){
         $units =  (new \App\units())->all();
-        return $units; //response(['allUnit'=>$units]);//->json(['allUnit'=>$units]);
+        return view('Locations',['items'=>$units]);
+        //return $units; //response(['allUnit'=>$units]);//->json(['allUnit'=>$units]);
 
     }
     public function addUnit(Request $request){
