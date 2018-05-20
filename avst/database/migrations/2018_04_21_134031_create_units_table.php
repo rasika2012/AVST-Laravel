@@ -21,7 +21,8 @@ class CreateUnitsTable extends Migration
            // $table->text('atributes');
             $table->text('longitude');
             $table->text('latitude');
-            $table->text('altitude');
+            //$table->text('altitude');
+            $table->text('unitId');
             //'latitude');
             //$unit->altitude = $request->input('altitude');
         });
