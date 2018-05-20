@@ -54,8 +54,9 @@
                         <div class="modal-header">
                             <h4 class="modal-title" id="myModalLabel">more info..</h4>
                         </div>
-                        <img class="card-img-top" src="http://localhost:8000/ " alt="Card image cap">
+
                         <div class="modal-body" id="description">
+                            <img class="card-img-top" src="http://localhost:8000/ "  width="20" height="20" alt="Card image cap">
 
                         </div>
                     </div>
@@ -72,6 +73,7 @@
             var imageParent = document.getElementById("description");
             image.id = "Id";
             image.className = "class";
+            image.width=450;
             image.src ="http://localhost:8000/"+     item.image;
             imageParent.appendChild(image);
 
