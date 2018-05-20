@@ -39,4 +39,4 @@ Route::get('/addunit', function () {
 Route::get('/location/{id}','UnitsController@getLocation');
 Route::get('/getAllUnits' , 'UnitsController@getAllUnit');
 Route::post('/addNewUnit',['uses'=>'UnitsController@addUnit']);
-
+Route::get('/hi/{location}','ImagesController@getImages');

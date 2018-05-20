@@ -69,28 +69,23 @@ class ImagesController extends Controller
 
     public function search($search) {
 
-        // Sets the parameters from the get request to the variables.
-
-        //$hasCoffeeMachine =$request->input('search');
-
-        //  $result= Imag::all();//Imag::where('path','like',$search)->orWhere('name', 'like', $search)->get();
 
         $images = images::where('location', 'LIKE', '%' . $search . '%')->limit(10)->get();
         return response()->json(['all'=>$images]);
-        //return view('path/location/id', compact('lacation'));
-        /*   $columns = [];
 
-           $query = (new \App\Imag)->select('*');
-
-           foreach($columns as $column)
-           {
-           $query->where($column, '=', $search);
-           }
-
-           $models = $query->get();
-           return response()->json(['all'=>$models]);
-
-           */
 
     }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getImages($location){
+       // $location = "rathnapura";
+       // $users = (new \App\images())->select('location')->get();
+        $images = (new \App\images())->select('*')->where('location' , $location)->get();
+        //$images = images::select('select * from images where location = '.$location, [1]);
+        return response()->json(['hi'=>$images]);
+    }
+
+
 }

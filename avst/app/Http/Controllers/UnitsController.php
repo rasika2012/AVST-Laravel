@@ -12,9 +12,8 @@ class UnitsController extends Controller
         return response()->json(['unit'=>$unit]);
     }
     public function getAllUnit(){
-        $units =  (new \App\units())->all();
-        return $units; //response(['allUnit'=>$units]);//->json(['allUnit'=>$units]);
-
+        $location = (new \App\units())->select('location')->get();
+        return response()->json([$location]);
     }
     public function addUnit(Request $request){
         $unit =  (new \App\units());
