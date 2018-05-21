@@ -47,5 +47,14 @@ Route::get('/addunit', function () {
 Route::get('/location/{id}','UnitsController@getLocation');
 Route::get('/getAllUnits' , 'UnitsController@getAllUnit');
 Route::post('/addNewUnit',['uses'=>'UnitsController@addUnit']);
+
 Route::get('/deleteNews/{id}','NewsController@deleteNews');
 Route::get('locationimage/','ImagesController@getLocation');
+
+Route::POST('/add1',[
+    'uses'=>'ImagesController@ImageAdd1'
+]);
+Route::get('/test', function () {
+    return view('test');
+});
+
