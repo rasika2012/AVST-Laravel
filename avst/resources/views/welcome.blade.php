@@ -24,15 +24,18 @@
         <div class="col-sm-6 h-100">
             <div id="map"></div>
         </div>
-        <div class="col-sm-6 h-100" style="background-color:pink;">
+        <div class=" col-sm-6 h-100">
             <div class="row">
                 @foreach ($items as $item)
-                    <div class="card" style="width: 18rem;">
 
-                        <div class="card-body">
-                            <h5 class="card-title">{{$item->caption}}</h5>
-                            <p class="card-text">{{$item->news}}</p>
-                            <a href="#" class="btn btn-danger btn-sm">X</a>
+                    <div class="alert alert-dark " style="width: 90%" role="alert">
+                        <h4 class="alert-heading">{{$item->caption}}</h4>
+                        <hr>
+                        <p>{{$item->news}}</p>
+
+                        <p class="mb-0">{{$item->updated_at}}</p>
+                        <div class="float-right">
+                            <a href="/deleteNews/{{$item->id}}">X</a>
                         </div>
                     </div>
                 @endforeach

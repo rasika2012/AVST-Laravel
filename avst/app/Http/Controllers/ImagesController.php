@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\images;
+use App\units;
+use Faker\Provider\Image;
 use Illuminate\Http\Request;
 
 class ImagesController extends Controller
@@ -26,7 +28,8 @@ class ImagesController extends Controller
 
         $image=(new \App\images());
         $image->speed = $request->input('speed');
-        $image->location = $request->input('location');
+        $location_details = units::where('unitId', 'LIKE', '%' . $request->input('location'). '%')->limit(1)->get();
+        $image->location=$location_details[0]->location;
         $image->image = $fileName;
         $image->save();
 
@@ -41,7 +44,9 @@ class ImagesController extends Controller
 */
 
         $allItem=images::all();
-        return view('all_images',['items'=>$allItem]);
+        //$allItem=images::orderBy('id','desc');
+       //$revAllItem=array_reverse($allItem);
+         return view('all_images',['items'=>$allItem->reverse()]);
     }
 
 
@@ -66,6 +71,11 @@ class ImagesController extends Controller
 
     }
 
+    public function getLocation(Request $request) {
+        $images = images::where('location', 'LIKE', '%' . $request->input('searchText') . '%')->limit(10)->get();
+        return view('all_images',['items'=>$images->reverse()]);
+        //return response()->json(["msg"=>$images]);
+    }
 
     public function search($search) {
 
