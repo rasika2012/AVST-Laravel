@@ -38,6 +38,8 @@ Route::get('/settings', function () {
     return view('Settings');
 });
 Route::get('/addNews','NewsController@setNews');
+Route::get('/unit/getCode','CodeController@getCode');
+
 Route::get('/upload/code','CodeController@uploadCode');
 //Hamth
 Route::get('/addunit', function () {
