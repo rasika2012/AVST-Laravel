@@ -75,16 +75,29 @@ class ImagesController extends Controller
 
 
     }
+    public function ImageAdd1(Request $request){
+/*
+        $explote = explode(',',$request->image);
+        $decode = base64_decode($explote[1]);
+        $explote1=explode('/',$explote[0]);
+        $explote2=explode(';',$explote1[1]);
+        $extention =$explote2[0];
+        $time = time();
+        $fileName = $time . '.' . $extention;
+        $filePath = public_path().'/'.$fileName;
+        file_put_contents($filePath,$decode);
 
-    /**
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getImages($location){
-       // $location = "rathnapura";
-       // $users = (new \App\images())->select('location')->get();
-        $images = (new \App\images())->select('*')->where('location' , $location)->get();
-        //$images = images::select('select * from images where location = '.$location, [1]);
-        return response()->json(['hi'=>$images]);
+
+
+*/
+
+        $image=(new \App\images());
+        $image->speed = $request->input('speed');
+        $image->location = $request->input('location');
+        $image->image = $request->image;
+        $image->save();
+
+        return view("test");//->json( ['msg'=>$image],201);
     }
 
 

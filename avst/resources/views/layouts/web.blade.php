@@ -53,7 +53,7 @@
                     <a class="nav-link" href="/addnew">Software</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/locations">Units</a>
+                    <a class="nav-link " href="/getAllUnits">Units</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/addunit">Add unit</a>

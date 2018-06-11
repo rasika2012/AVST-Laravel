@@ -23,7 +23,7 @@ class NewsController extends Controller
 
 
     public function deleteNews(Request $request){
-        $news=new (App/News())->find($request->input("key"));
+        $news=new App/News()->find($request->input("key"));
 
         return view('welcome',['items'=>$news]);
 
