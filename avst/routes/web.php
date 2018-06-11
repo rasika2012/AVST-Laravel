@@ -17,6 +17,7 @@ use App\Http\Controllers\ImagController;
 //
 //});
 Route::get('/', 'NewsController@getNews')->name('welcome');
+//Route::get('/', 'CodeController@getCodes')->name('uploadimg');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -25,9 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //get all images hereaddnew
 Route::get('/allimges', 'ImagesController@returnAll')->name('All Images');
-Route::get('/addnew', function () {
-    return view('uploadimg');
-});//deleteImage
+Route::get('/addnew','CodeController@getCodes')->name('uploadimg');//deleteImage
 Route::get('/delete/{id}','ImagesController@deleteImage');
 
 Route::get('/deleteUnit/{id}','UnitsController@deleteUnit');
@@ -39,7 +38,7 @@ Route::get('/settings', function () {
     return view('Settings');
 });
 Route::get('/addNews','NewsController@setNews');
-
+Route::get('/upload/code','CodeController@uploadCode');
 //Hamth
 Route::get('/addunit', function () {
     return view('addUnit');
