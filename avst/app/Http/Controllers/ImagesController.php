@@ -21,18 +21,12 @@ class ImagesController extends Controller
         $fileName = $time . '.' . $extention;
         $filePath = public_path().'/'.$fileName;
         file_put_contents($filePath,$decode);
-
-
-
-
-
-        $image=(new \App\images());
+        $image=new images();
         $image->speed = $request->input('speed');
         $location_details = units::where('unitId', 'LIKE', '%' . $request->input('location'). '%')->limit(1)->get();
         $image->location=$location_details[0]->location;
         $image->image = $fileName;
         $image->save();
-
         return response()->json( ['msg'=>$image],201);
     }
 

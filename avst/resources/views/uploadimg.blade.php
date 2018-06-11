@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <label for="email" class="col-md-4 control-label">Code(*.py)</label>
                         <div class="">
-                            <textarea id="author" rows="20" type="text" class="form-control" name="code" required
+                            <textarea id="author" rows="10" type="text" class="form-control" name="code" required
                                       autofocus></textarea>
                         </div>
                     </div>
@@ -42,22 +42,30 @@
                 </form>
             </div>
             <div class=" col-sm-6 h-100">
-                <div class="row">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Version</th>
+                        <th scope="col">Comment</th>
+                        <th scope="col">Uploaded Date</th>
+
+
+                    </tr>
+                    </thead>
                     @foreach ($items as $item)
 
-                        <div class="alert alert-dark " style="width: 90%" role="alert">
-                            <h4 class="alert-heading">{{$item->version}}</h4>
-                            <hr>
-                            <p>{{$item->comment}}</p>
-
-                            <p class="mb-0">{{$item->updated_at}}</p>
-                            <div class="float-right">
-                                <a href="/deleteNews/{{$item->id}}">X</a>
-                            </div>
-                        </div>
+                        <tr>
+                            <th scope="col">{{$item->version}}</th>
+                            <th scope="col">{{$item->comment}}</th>
+                            <th scope="col">{{$item->updated_at}}</th>
+                            </tr>
+                        </thead>
                     @endforeach
 
-                </div>
+
+                </table>
+
             </div>
         </div>
     </div>

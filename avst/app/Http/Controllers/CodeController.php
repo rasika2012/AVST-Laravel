@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class CodeController extends Controller
 {
     public function getCodes(){
-        $code=Code::all();
+        $code=Code::all()->slice(-6,6);
         return view('uploadimg',['items'=>$code->reverse()]);
     }
 
@@ -23,10 +23,12 @@ class CodeController extends Controller
     }
 
 
-    public function deleteCode( $id){
-        $code=(new \App\Code())->find($id);
-        $code->delete();
-        return redirect("/upload/code");
+    public function getCode(){
+        $code= Code::all()->slice(-1,1);
+        foreach ($code as $newCode){
+            return  $newCode;
+        }
+
 
     }
 }
