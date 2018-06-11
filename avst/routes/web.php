@@ -12,13 +12,16 @@ use App\Http\Controllers\ImagController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+//Route::get('/', function () {
+//    return view('welcome');
+//
+//});
+Route::get('/', 'NewsController@getNews')->name('welcome');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 
 //get all images hereaddnew
 Route::get('/allimges', 'ImagesController@returnAll')->name('All Images');
@@ -33,10 +36,12 @@ Route::get('/locations', function () {
 Route::get('/settings', function () {
     return view('Settings');
 });
+Route::get('/addNews','NewsController@setNews');
+
+//Hamth
 Route::get('/addunit', function () {
     return view('addUnit');
 });
 Route::get('/location/{id}','UnitsController@getLocation');
 Route::get('/getAllUnits' , 'UnitsController@getAllUnit');
 Route::post('/addNewUnit',['uses'=>'UnitsController@addUnit']);
-Route::get('/hi/{location}','ImagesController@getImages');

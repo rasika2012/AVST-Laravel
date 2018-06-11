@@ -18,12 +18,15 @@ class CreateUnitsTable extends Migration
             $table->timestamps();
             $table->string('location');
             $table->string('max_speed');
+           // $table->text('atributes');
             $table->text('longitude');
             $table->text('latitude');
             $table->text('altitude');
-
+            //'latitude');
+            //$unit->altitude = $request->input('altitude');
         });
     }
+
 
     /**
      * Reverse the migrations.

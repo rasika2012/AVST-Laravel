@@ -2,32 +2,22 @@
 
 @section('content')
 
-    <nav class="navbar fixed-bottom   navbar-expand navbar navbar-default ">
-        <div class="navbar-header col-md-offset-2">
-            <div class="navbar-header">
-                <a class="panel-heading">Search Options
-                </a>
-            </div>
-            <div class="navbar-header">
-                <div class="row">
-                    <h2>Filter Location </h2>
-                    <input type="text" class="  search-query form-control" placeholder="Search"/>
-                    <button class="btn bg" type="button">
-                        <span class="">Search</span></button>
-                </div>
-            </div>
+    <nav class="navbar fixed-bottom bg-light navbar-expand navbar navbar-default  ">
 
-            <div class="navbar-header navbar-left">
-                <div class="row">
-                    <h2>Time </h2>
-                    <input type="text" class="  search-query form-control" placeholder="Search"/>
-                    <button class="btn bg" type="button">
-                        <span class="">Search</span></button>
-                </div>
-            </div>
+        <ul class="navbar-nav db">
 
-        </div>
+            <li class="nav-item active">
+            <li><input type="text" class="form-control" placeholder="Location Search"/></li>
+            </li>
+            <li class="nav-item active">
+            <li> <button class="form-control " type="button">
+                    <span class="">Search</span>
+                </button></li>
+            </li>
+        </ul>
+
     </nav>
+
     <div class="col-md-12 col-md-offset-0">
         <div class="panel panel-default">
             <div></div>
@@ -44,7 +34,7 @@
                                 <p class="card-text">Speed:{{$item->speed}}<br>
                                     Speed limit:{{$item->speed}}</p>
 
-                                <button class="btn btn-primary" data-toggle="modal"
+                                <button class="btn btn-primary" onclick="forwardTodes({{json_encode($item)}})" data-toggle="modal"
                                         data-target="#myModal">
                                     more..
                                 </button>
@@ -57,13 +47,6 @@
                 @endforeach
 
             </div>
-
-            <!-- Button trigger modal -->
-
-
-            <!-- Modal -->
-
-
             <div class="modal fade  " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog">
@@ -71,12 +54,30 @@
                         <div class="modal-header">
                             <h4 class="modal-title" id="myModalLabel">more info..</h4>
                         </div>
-                        <div class="modal-body">
-                            ...
+
+                        <div class="modal-body" id="description">
+                            <img class="card-img-top" src="http://localhost:8000/ "  width="20" height="20" alt="Card image cap">
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+
+        function  forwardTodes(item) {
+            document.getElementById("description").innerHTML = "speed:"+item.speed+"<br>Location:"+item.location;
+//http://localhost:8000/
+            var image = document.createElement("img");
+            var imageParent = document.getElementById("description");
+            image.id = "Id";
+            image.className = "class";
+            image.width=450;
+            image.src ="http://localhost:8000/"+     item.image;
+            imageParent.appendChild(image);
+
+        }
+
+    </script>
 @endsection

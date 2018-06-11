@@ -9,61 +9,21 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Styles -->
-    <style>
-        /* Always set the map height explicitly to define the size of the div
-         * element that contains the map. */
-        .modal-dialog {
-            margin: 0px auto;
-        }
-
-        .modal-backdrop.fade {
-            opacity: 0.1;
-            filter: alpha(opacity=0.1);
-        }
-
-        .modal-content {
-            position: relative;
-            background-color: #FFF;
-            border: 1px solid #CECECE;
-            border-radius: 0px;
-            -webkit-box-shadow:none;
-            box-shadow: none;
-            background-clip: padding-box;
-            outline: 0;
-        }
-
-
-        .modal-header {
-            padding: 11px 15px;
-            background-color: #F8F8F8;
-            background: -webkit-linear-gradient(top, #F8F8F8, #F2F2F2);
-            background: -moz-linear-gradient(top, #f8f8f8, #f2f2f2);
-            background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
-            background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
-            background: linear-gradient(top, #f8f8f8, #f2f2f2);
-        }
-
-        #map {
-            height: 100%;
-        }
-    </style>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 
 </head>
 <body>
-<nav class="navbar fixed-top bg-light navbar-expand navbar navbar-default ">
+<nav class="navbar navbar-light bg-light fixed-top navbar-expand" >
 
     <a class="nav-link" href="#">AVST-Automated Vehilcle Speed Trap</a>
 
@@ -98,11 +58,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/addunit">Add unit</a>
                 </li>
-
-
             @endguest
         </ul>
-
     </div>
     @guest
     @else
@@ -130,7 +87,6 @@
                 <p class="nav-link"></p>
             </li>
         </ul>
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     @endguest
 </nav>
 <br><br><br>
@@ -140,83 +96,9 @@
     <p></p>
     <h1>&nbsp;&nbsp;&nbsp;Login or Create an Acount</h1>
 @else
-    <br>
-    <br>
     @yield('content');
 @endguest
 </body>
 </html>
-{{--
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                    --}}{{--add navbar--}}{{--
-                    <div  class="navbar-brand" >
-                        <a href="{{ url('/home') }}">Home</a>
-                        <a href="{{ url('/home') }}">Home</a>
-                        <a href="{{ url('/home') }}">Home</a>
-                    </div>
-
-
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-
-
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        @yield('content')
-    </div>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>--}}
 
