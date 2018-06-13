@@ -27,7 +27,7 @@
                 @foreach ($items as $item)
                     <div class="col-sm-3">
                         <div class="card">
-                            <img class="card-img-top" src="http://localhost:8000/{{$item->image}} " alt="Card image cap"
+                            <img class="card-img-top" src="/{{$item->image}} " alt="Card image cap"
                                  width="150" height="125">
                             <div class="card-body">
 
@@ -78,7 +78,7 @@
             image.id = "Id";
             image.className = "class";
             image.width = 450;
-            image.src = "http://localhost:8000/" + item.image;
+            image.src = "/" + item.image;
             imageParent.appendChild(image);
 
         }

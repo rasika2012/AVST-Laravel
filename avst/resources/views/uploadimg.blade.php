@@ -2,20 +2,16 @@
 
 @section('content')
 
-    <h1 class="panel-heading">Update Code to Units</h1>
+
     <div class="panel panel-default">
         <div></div>
         <div class="row h-100">
             <div class="col-sm-6 h-100">
+                <h1 class="panel-heading">Update CODE!</h1>
                 <form class="form-horizontal" method="GET" action="/upload/code">
 
 
-                    <div class="form-group">
-                        <label for="email" class="col-md-4 control-label">Software Version</label>
-                        <div class="col-md-6">
-                            <input id="author" type="text" class="form-control" name="version" required autofocus>
-                        </div>
-                    </div>
+
 
                     <div class="form-group">
                         <label for="email" class="col-md-4 control-label">Comments</label>
@@ -49,22 +45,25 @@
                         <th scope="col">Version</th>
                         <th scope="col">Comment</th>
                         <th scope="col">Uploaded Date</th>
-
-
                     </tr>
                     </thead>
                     @foreach ($items as $item)
-
                         <tr>
-                            <th scope="col">{{$item->version}}</th>
+                            <th scope="col">{{$item->id}}</th>
                             <th scope="col">{{$item->comment}}</th>
                             <th scope="col">{{$item->updated_at}}</th>
                             </tr>
                         </thead>
                     @endforeach
-
-
                 </table>
+                <div>
+                    @foreach ($items as $item)
+
+                        <textarea id="author" rows="10" type="text" class="form-control" name="precode" value=""
+                                  >{{$item->code}}</textarea>
+
+                    @endforeach
+                </div>
 
             </div>
         </div>

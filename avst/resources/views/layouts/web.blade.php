@@ -20,12 +20,26 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <style type="text/css">
+        .bg {
+            /* The image used */
+            background-image: url('/img/back.png');
+            z-index: -10;
+            /* Half height */
+            height: 50%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 
 </head>
-<body>
-<nav class="navbar navbar-light bg-light fixed-top navbar-expand" >
+<body class="bg">
+<nav class="navbar navbar-light bg-light fixed-top navbar-expand">
 
-    <a class="nav-link" href="#">AVST-Automated Vehilcle Speed Trap</a>
+    <a class="nav-link" href="#">AVST</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,7 +94,8 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
-                    <a class="dropdown-item" href="/settings">Settings</a>
+                    <a class="dropdown-item" href="/settings">Send News</a>
+                    <a class="dropdown-item" href="/password/reset">Reset Password</a>
                 </div>
             </li>
             <li class=" nav-item">
@@ -91,13 +106,11 @@
 </nav>
 <br><br><br>
 @guest
-    <br>
-    <br>
-    <p></p>
-    <h1>&nbsp;&nbsp;&nbsp;Login or Create an Acount</h1>
+    <img src="/img/logo.jpg " height="500">
 @else
     @yield('content');
 @endguest
+
 </body>
 </html>
 

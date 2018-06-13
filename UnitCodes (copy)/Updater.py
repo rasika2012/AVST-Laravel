@@ -11,8 +11,9 @@ Unit_Location = '1'
 Device_ID = 'AVST0001'
 Software_Version = '001'
 Key='455266435'
-codeUrl = 'http://192.168.8.104/unit/getCode'
-url = 'http://192.168.8.104/api/add1'
+host='localhost:8000'
+codeUrl = 'http://'+host+'/unit/getCode'
+url = 'http://'+host+'/api/add1'
 camID = 1
 ###################################################
 

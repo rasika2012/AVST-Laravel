@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class CodeController extends Controller
 {
     public function getCodes(){
-        $code=Code::all()->slice(-6,6);
+        $code=Code::all()->slice(-1,1);
         return view('uploadimg',['items'=>$code->reverse()]);
     }
 
@@ -15,7 +15,7 @@ class CodeController extends Controller
         $code= new Code();
         $code->code=$request->input("code");
         $code->comment=$request->input("comment");
-        $code->version=$request->input("version");
+        $code->version="demo";
         $code->author="NOT DEFINED";
         $code->save();
         return $this->getCodes();

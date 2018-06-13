@@ -20,7 +20,7 @@ Route::get('/', 'NewsController@getNews')->name('welcome');
 //Route::get('/', 'CodeController@getCodes')->name('uploadimg');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'NewsController@getNews')->name('Welcome');
 
 
 

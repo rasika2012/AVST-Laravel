@@ -22,7 +22,7 @@
     <body>
     <div class="row h-100">
         <div class="col-sm-6 h-100">
-            <div id="map"></div>
+            <img  src="/img/banner.png " height="500">
         </div>
         <div class=" col-sm-6 h-100">
             <div class="row">
