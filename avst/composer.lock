@@ -4,6 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+
+    "hash": "3969a546ee38d374b5c228c529fdce5e",
     "content-hash": "67ac5658215de157a380f49e0b855033",
     "packages": [
         {
@@ -56,7 +58,9 @@
                 "cors",
                 "stack"
             ],
+
             "time": "2017-12-20T14:37:45+00:00"
+
         },
         {
             "name": "barryvdh/laravel-cors",
@@ -117,7 +121,9 @@
                 "crossdomain",
                 "laravel"
             ],
+
             "time": "2018-01-04T06:59:27+00:00"
+
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

@@ -45,10 +45,10 @@
                     <a class="nav-link" href="/allimges">All Images</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="/addnew">Pricing</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                    <a class="nav-link" href="">Add unit</a>
                 </li>
 
             @endguest

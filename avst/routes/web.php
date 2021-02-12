@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\ImagController;
+use App\Http\Controllers\UnitsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//get all images here
-Route::get('/allimges', 'ImagesController@returnAll')->name('home');
-//add new image
-Route::POST('/add','ImagesController@ImageAdd');
+Route::get('/allimges', 'ImagesController@returnAll')->name('All Images');
+Route::get('/addnew', function () {
+    return view('uploadimg');
+});//deleteImage
+Route::get('/delete/{id}','ImagesController@deleteImage');
+Route::get('/location/{id}','UnitsController@getLocation');
+Route::get('/getAllUnits' , 'UnitsController@getAllUnit');
+Route::POST('/addUnit','ImagesController@ImageAdd');
+
